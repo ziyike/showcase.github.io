@@ -1,97 +1,89 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <style>
-    body {
-      background: #fff;
-      margin: 2rem;
-    }
-
-    #video-compare-container {
-      display: inline-block;
-      line-height: 0;
-      position: relative;
-      width: 100%;
-      padding-top: 42.3%;
-    }
-
-    #video-compare-container > video {
-      width: 100%;
-      position: absolute;
-      top: 0;
-      height: 100%;
-    }
-
-    #video-clipper {
-      width: 50%;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      overflow: hidden;
-    }
-
-    #video-clipper video {
-      width: 200%;
-      postion: absolute;
-      height: 100%;
-    }
-  </style>
-</head>
-
-<body>
-  <center>
-    <h1> <b>A</b> VS  <b>B</b> </h1>
-    <h3>Click on video to play or pause. Move mouse to change the hover.</h3>
-  </center>
-
-  <div id="video-compare-container">
-    <video id='src' loop autoplay onclick="video_click()">
-      <source src="videos/showcase1Trim.mp4">
-      <!-- <source src=/loca/path/to/your/mp4> -->
-    </video>
-    <div id="video-clipper">
-      <video id='tgt' loop autoplay onclick="video_click()">
-        <source src=videos/showcase4Trim.mp4>
-        <!-- <source src=/home/yun/out2.mp4> -->
-      </video>
-    </div>
-  </div>
-
-  <script>
-    var v = document.getElementById("src");
-    var v2 = document.getElementById("tgt");
-
-    function video_click() {
-      if (v.paused){
-       v.play();
-       v2.play(); 
-      }
-      else{
-        v.pause();
-        v2.pause();
-      }
-      // v.paused ? v.play() : v.pause();
-      // v2.paused ? v2.play() : v2.pause();
-      v.currentTime=v2.currentTime;
-      v2.currentTime=v.currentTime;
-    }
-
-    var videoContainer = document.getElementById("video-compare-container"),
-    videoClipper = document.getElementById("video-clipper"),
-    clippedVideo = videoClipper.getElementsByTagName("video")[0];
-
-    function trackLocation(e) {
-      var rect = videoContainer.getBoundingClientRect(),
-        position = ((e.pageX - rect.left) / videoContainer.offsetWidth) * 100;
-      if (position <= 100) {
-        videoClipper.style.width = position + "%";
-        clippedVideo.style.width = ((100 / position) * 100) + "%";
-        clippedVideo.style.zIndex = 3;
-      }
-    }
-    videoContainer.addEventListener("mousemove", trackLocation, false);
-    videoContainer.addEventListener("touchstart", trackLocation, false);
-    videoContainer.addEventListener("touchmove", trackLocation, false);
-  </script>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Portfolio Page Template</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+	  <style>
+		  .portfolio > div {
+  padding: 0 !important;
+}
+.portfolio img {
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 480px) { 
+  .col-xs-6 { 
+    width: 100% !important; 
+  } 
+}
+	  </style>
+  </head>
+  <body>
+    <section>
+      <div class="jumbotron text-center mt-2">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <h1>Scan-to-BIM: Automated IFC Modeling from Point Cloud</h1>
+              <p>A bSI Awards 2024 Entry</p>
+              <p>Category: Professional Research</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h1>From PointCloud Scan to openBIM</h1>
+            <p>We proposed a multi-stage pipeline, in which the scan-to-bim task is split into 4 sub-tasks: semantic segmentation, primitive fitting, component instancing and layout adjustment.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+	  <hr/>
+    <section>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h2>Showcasing</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-12 text-center">
+			<iframe id="page_1v2" style="width: 33vw;height: 33vh;position: relative;" src="subindex1.html" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
+            <h4>PointCloud vs Segmentation</h4>
+          </div>
+          <div class="col-md-4 col-12 text-center">
+			<iframe id="page_2v3" style="width: 33vw;height: 33vh;position: relative;" src="subindex2.html" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
+            <h4>Segmentation vs Primitives</h4>
+          </div>
+          <div class="col-md-4 col-12 text-center">
+			<iframe id="page_3v4" style="width: 33vw;height: 33vh;position: relative;" src="subindex3.html" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
+            <h4>Primitives vs openBIM</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr>
+    <footer class="text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <p>Copyright © CBIMS Research Group. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.4.1.js"></script>
+  </body>
 </html>
